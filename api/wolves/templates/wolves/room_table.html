@@ -1,0 +1,19 @@
+<table border="1">
+        <h3>Player List:</h3>
+        <tr>
+                <th>SNo.</th>
+                <th>P Name</th>
+                <th>P Role</th>
+        </tr>
+        {% for p in players %}
+        <tr>
+            <td>{{ forloop.counter }}</td>
+            <td>{{ p.user.username }}</td>
+            {% if user.player.role == 1 or p.role == 1%}
+                <td>{{ p.role }}</td>
+            {% else %}
+                <td><i>Restricted Data</i></td>
+            {% endif %}
+       </tr>
+        {% endfor %}
+</table>

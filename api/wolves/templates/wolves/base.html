@@ -1,0 +1,43 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>{% block title%}Wolves{%endblock%}</title>
+    <link rel="stylesheet" href="{% static '/wolves/css/base.css' %}">
+    <script src="{% static '/wolves/js/jquery-3.4.1.js' %}"></script>
+</head>
+<body>
+
+    {% block navbar %}
+    <nav class="navbar">
+
+        <div class="logo"><a href="{% url 'index' %}">Wolves</a></div>
+
+        <div class="username">{{ request.user.username }}</div>
+
+        {% if request.user.is_authenticated %}
+        <div class="navsep"></div>
+        {% endif %}
+
+        <ul class="nav-links">
+            {% if request.user.is_authenticated %}
+                <li class="logout"><a href="{% url 'signout' %}">Log Out</a></li>
+            {% else %}
+                <li class="signin"><a href="{% url 'signin' %}">Sign In</a></li>
+                <li class="signup"><a href="{% url 'signup' %}">Sign Up</a></li>
+            {% endif %}
+        </ul>
+
+    </nav>
+    {% endblock navbar %}
+
+    <div class="content">
+        {% block content %}{% endblock content %}
+    </div>
+    
+</body>
+{% block scripts %}{% endblock scripts %}
+</html>

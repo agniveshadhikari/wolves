@@ -1,0 +1,11 @@
+{% extends "wolves/base.html" %}
+{% block title %}Welcome{% endblock %}
+{% block content %}
+
+<h3>Welcome, Player. </h3> <br> <br>
+I have been waiting long for you . . .<br><br>
+I hope you have already joined us. Let's begin then, <a href="{% url 'signin' %}">Sign in</a>.
+<br><br>
+New here?  Don't worry, you'll learn all that you need. <a href="{% url 'signup' %}">Sign up</a>.
+
+{% endblock content %}
